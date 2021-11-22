@@ -1,34 +1,31 @@
 # Вариант 8
 # Даны два целых числа A и B (A < B). Найти сумму квадратов всех целых чисел от A до B
 # включительно.
+A = input("Введите число A: ")
 
-A = input('Введите первое число (A < B): ')
-B = input('Введите второе число (A < B): ')
-
-while type(A) != float:
+while type(A) != int:  # Обработка исключений
     try:
-        A = float(A)
+        A = int(A)
     except ValueError:
-        print('Введено неверное число')
-        A = input('Введите число : ')
+        print("Неправильный ввод!")
+        A = input("Введите число A: ")
 
-while type(B) != float:
+B = input("Введите число B (должно быть больше числа A): ")
+
+while type(B) != int:  # Обработка исключений
     try:
-        B = float(B)
+        B = int(B)
     except ValueError:
-        print('Введено неверное число')
-        B = input('Введите число : ')
+        print("Неправильный ввод!")
+        B = input("Введите число B (должно быть больше числа A): ")
+    if type(B) == int and B < A:
+        print("Неправильный ввод!")
+        B = input("Введите число B (должно быть больше числа A): ")
 
-    try:
-        while A > B:
-            print('Введено неверное число')
-            A = input('Введите заново первое число (A < B): ')
-            B = input('Введите заново ыторое число (A < B): ')
-    except TypeError:
-        continue
-    S = 0
-    while A <= B:
-        print (A)
-        A += 1
-    S = S + A**2
-    print('Сумма квадратов: ', S)
+N = 0
+S = 0
+while A <= B:
+    S = A * A
+    N += S
+    A += 1
+print('Сумма квадратов: ', N)
